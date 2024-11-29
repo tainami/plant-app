@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:plant/screens/home_screen.dart';
-import 'package:plant/screens/login_screen.dart';
-import 'package:plant/screens/profile_screen.dart';
-import 'package:plant/screens/register_screen.dart';
-import 'package:plant/screens/splash_screen.dart';
+import 'package:plant/app/home/screen/home_screen.dart';
+import 'package:plant/app/auth/login_screen.dart';
+import 'package:plant/app/profile/profile_screen.dart';
+import 'package:plant/app/auth/register_screen.dart';
+import 'package:plant/app/splash/splash_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
