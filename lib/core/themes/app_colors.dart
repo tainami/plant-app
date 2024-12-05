@@ -8,5 +8,6 @@ class AppColors {
   static const body = Color(0xFF706E7A);
   static const stroke = Color(0xFFE3E3E6);
   static const shape = Color(0xFFFAFAFC);
+  static const green = Color(0xFF15400E);
   static const background = Color(0xFFFFFFFF);
 }

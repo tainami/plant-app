@@ -1,11 +1,9 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:plant/app/home/bloc/users/users_bloc.dart';
 import 'package:plant/app/home/bloc/users/users_event.dart';
 import 'package:plant/app/home/bloc/users/users_state.dart';
-import 'package:plant/app/home/reposiotry/users_repository.dart';
 import 'package:plant/app/home/screen/widgets/user_plants_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,13 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    userBloc = UsersBloc(
-      UsersRepositoryImpl(
-        FirebaseFirestore.instance,
-      ),
-    );
+    userBloc = GetIt.instance<UsersBloc>();
 
     userBloc.add(GetUsers());
+  }
+
+  @override
+  void dispose() {
+    userBloc.close();
+    super.dispose();
   }
 
   @override
