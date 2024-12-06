@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   final IconData icon;
   final bool obscureText;
+  final String? Function(String?)? validator;
 
   const CustomTextField({
     super.key,
@@ -13,6 +14,7 @@ class CustomTextField extends StatelessWidget {
     required this.labelText,
     required this.icon,
     this.obscureText = false,
+    this.validator,
   });
 
   @override
@@ -46,6 +48,7 @@ class CustomTextField extends StatelessWidget {
           color: AppColors.green,
         ),
       ),
+      validator: validator,
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:plant/app/auth/screen/register_screen.dart';
 import 'package:plant/app/home/screen/home_screen.dart';
 import 'package:plant/app/profile/profile_screen.dart';
 import 'package:plant/app/splash/splash_screen.dart';
+import 'package:plant/core/themes/app_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -12,7 +13,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Plant App",
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: PlantThemeData.primary(),
+      darkTheme: PlantThemeData.secondary(),
+      themeMode: ThemeMode.light,
       initialRoute: "/",
       routes: {
         "/": (context) => const LoginScreen(),

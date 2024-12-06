@@ -1,9 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plant/app/auth/bloc/auth_bloc.dart';
 import 'package:plant/app/auth/bloc/auth_event.dart';
 import 'package:plant/app/auth/bloc/auth_state.dart';
 import 'package:plant/core/di/di.dart';
+import 'package:plant/core/extensions/theme_extension.dart';
 import 'package:plant/core/themes/app_colors.dart';
 import 'package:plant/core/widgets/custom_text_field.dart';
 
@@ -72,26 +74,22 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 50),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 50),
                       child: Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "Welcome Back",
-                              style: TextStyle(
-                                fontSize: 26,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.green,
-                              ),
+                              style: context.titleLarge,
                             ),
                           ),
-                          Text(
+                          const Text(
                             "Login to your account",
                             style: TextStyle(
                               fontSize: 16,
-                              color: AppColors.grey,
+                              color: AppColors.gray,
                             ),
                           ),
                         ],
@@ -107,6 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: _passwordController,
                       labelText: "Password",
                       icon: Icons.lock,
+                      obscureText: true,
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
@@ -122,6 +121,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                           color: Color(0xFFFFFFFF),
                         ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    RichText(
+                      text: TextSpan(
+                        text: "Don't have an account? ",
+                        style:
+                            const TextStyle(color: Colors.grey, fontSize: 14),
+                        children: [
+                          TextSpan(
+                            text: "Sign up",
+                            style: const TextStyle(
+                                color: AppColors.green,
+                                fontWeight: FontWeight.bold),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.pushNamed(context, '/register');
+                              },
+                          ),
+                        ],
                       ),
                     ),
                   ],

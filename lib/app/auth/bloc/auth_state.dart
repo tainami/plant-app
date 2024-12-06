@@ -1,4 +1,4 @@
-abstract class AuthState {}
+sealed class AuthState {}
 
 class AuthInitial extends AuthState {}
 
@@ -10,7 +10,11 @@ class AuthAuthenticated extends AuthState {
   AuthAuthenticated(this.email);
 }
 
-class AuthUnauthenticated extends AuthState {}
+class AuthRegistered extends AuthState {
+  final String email;
+
+  AuthRegistered(this.email);
+}
 
 class AuthError extends AuthState {
   final String message;

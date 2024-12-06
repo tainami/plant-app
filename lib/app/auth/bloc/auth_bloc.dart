@@ -35,7 +35,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final (user, error) =
         await repository.register(event.email, event.password);
     if (user != null) {
-      emit(AuthAuthenticated(user.email));
+      emit(AuthRegistered(user.email));
     } else if (error != null) {
       emit(
         AuthError('Erro ao registrar. Verifique os dados informados.'),
